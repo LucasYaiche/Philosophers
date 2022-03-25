@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   check_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 18:31:37 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/03/25 12:35:59 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/03/25 12:36:11 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/03/25 14:24:06 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <unistd.h>
-# include <pthread.h>
+int	check_argv(int argc, char **argv)
+{
+	int	i;
+	int	j;
 
-/*======*/
-/* error*/
-/*======*/
-
-int		check_argv(int argc, char **argv);
-
-/*======*/
-/* error*/
-/*======*/
-
-void	arg_error(void);
-
-/*======*/
-/* utils*/
-/*======*/
-
-size_t	ft_strlen(const char *str);
-
-/*========*/
-/* put_str*/
-/*========*/
-
-void	ft_putstr_error(char *s);
-
-#endif
+	i = -1;
+	while (argv[++i])
+	{
+		j = -1;
+		while (argv[i][++j])
+		{
+			
+		}
+	}
+}

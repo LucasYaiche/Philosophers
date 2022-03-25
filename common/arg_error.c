@@ -1,43 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   arg_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 18:31:37 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/03/25 12:35:59 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/03/25 12:22:31 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/03/25 12:23:22 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <unistd.h>
-# include <pthread.h>
-
-/*======*/
-/* error*/
-/*======*/
-
-int		check_argv(int argc, char **argv);
-
-/*======*/
-/* error*/
-/*======*/
-
-void	arg_error(void);
-
-/*======*/
-/* utils*/
-/*======*/
-
-size_t	ft_strlen(const char *str);
-
-/*========*/
-/* put_str*/
-/*========*/
-
-void	ft_putstr_error(char *s);
-
-#endif
+void	arg_error(void)
+{
+	ft_putstr_error("argument error.\nTry : \n./philo");
+	ft_putstr_error(" [nbr of philosophers] [time to die]");
+	ft_putstr_error("[time to eat] [time to sleep] ");
+	ft_putstr_error("[nbr of times each philo must eat]\n");
+}

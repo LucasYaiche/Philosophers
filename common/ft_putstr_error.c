@@ -1,43 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   ft_putstr_error.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 18:31:37 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/03/25 12:35:59 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/03/25 11:56:34 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/03/25 11:57:21 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-# include <unistd.h>
-# include <pthread.h>
+void	ft_putstr_error(char *s)
+{
+	int	i;
 
-/*======*/
-/* error*/
-/*======*/
-
-int		check_argv(int argc, char **argv);
-
-/*======*/
-/* error*/
-/*======*/
-
-void	arg_error(void);
-
-/*======*/
-/* utils*/
-/*======*/
-
-size_t	ft_strlen(const char *str);
-
-/*========*/
-/* put_str*/
-/*========*/
-
-void	ft_putstr_error(char *s);
-
-#endif
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		write(2, &s[i], 1);
+		i++;
+	}
+}
