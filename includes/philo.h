@@ -6,7 +6,7 @@
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:31:37 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/03/25 12:35:59 by lyaiche          ###   ########.fr       */
+/*   Updated: 2022/04/14 18:05:58 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 
 # include <unistd.h>
 # include <pthread.h>
+# include <stdio.h>
+# include <stdlib.h>
+
+
+// typedef struct s_philo
+// {
+// 	/* data */
+// }				t_philo;
+
 
 /*======*/
-/* error*/
+/* check*/
 /*======*/
 
 int		check_argv(int argc, char **argv);
@@ -33,6 +42,7 @@ void	arg_error(void);
 /*======*/
 
 size_t	ft_strlen(const char *str);
+int	ft_isdigit(int str);
 
 /*========*/
 /* put_str*/

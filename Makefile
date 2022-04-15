@@ -4,7 +4,7 @@
 
 PHILO_SRC = philo.c
 
-COMMON_SRC = ft_putstr_error.c ft_strlen.c
+COMMON_SRC = ft_putstr_error.c ft_strlen.c arg_error.c ft_isdigit.c check_argv.c
 				
 COMMON_OBJ = ${addprefix ${OBJDIR}, ${COMMON_SRC:%.c=%.o}}
 
