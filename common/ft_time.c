@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 12:36:11 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/19 14:18:06 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/04/21 16:46:33 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/04/21 16:46:59 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_argv(char **argv)
+unsigned long	ft_time(void)
 {
-	int	i;
-	int	j;
+	struct timeval	time;
 
-	i = -1;
-	while (argv[++i])
-	{
-		j = -1;
-		while (argv[i][++j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-		}
-	}
-	return (1);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + (time.tv_usec / 1000));
 }

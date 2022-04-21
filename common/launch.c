@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 12:36:11 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/19 14:18:06 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/04/21 14:37:20 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/04/21 16:46:56 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_argv(char **argv)
+int	launch(t_data *data)
 {
 	int	i;
-	int	j;
 
+	data->begin = ft_time();
 	i = -1;
-	while (argv[++i])
-	{
-		j = -1;
-		while (argv[i][++j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-		}
-	}
-	return (1);
-}
+	while (++i < data->nbr_philo)
+		if (pthread_create(&data->philos[i].thrd_id, NULL, routine, &data->philos[i]))
+			return (0);
+	check_dead(data);
+	return (0);
+}	

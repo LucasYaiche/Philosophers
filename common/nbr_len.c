@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   nbr_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 12:36:11 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/19 14:18:06 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/04/19 17:31:50 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/04/19 17:57:03 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_argv(char **argv)
+size_t	nbr_len(int nbr)
 {
 	int	i;
-	int	j;
 
-	i = -1;
-	while (argv[++i])
+	i = 0;
+	while (nbr > 0)
 	{
-		j = -1;
-		while (argv[i][++j])
-		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-		}
+		nbr /= 10;
+		i++;
 	}
-	return (1);
+	return (i);
 }
