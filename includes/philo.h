@@ -6,7 +6,7 @@
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 18:31:37 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/21 16:48:04 by lyaiche          ###   ########.fr       */
+/*   Updated: 2022/04/22 12:19:44 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ typedef struct s_philo
 typedef struct s_data
 {
 	int				nbr_philo;
-	int				ttd;
-	int				tte;
-	int				tts;
+	unsigned long	ttd;
+	unsigned long	tte;
+	unsigned long	tts;
 	int				notepme;
 	unsigned long	begin;
 	t_philo			*philos;
@@ -79,6 +79,7 @@ int				ft_atoi(const char *str);
 int				ft_isdigit(int str);
 size_t			ft_strlen(const char *str);
 unsigned long 	ft_time(void);
+void			ft_usleep(unsigned long);
 size_t			nbr_len(int nbr);
 
 #endif
