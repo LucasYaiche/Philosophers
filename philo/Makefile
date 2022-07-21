@@ -6,7 +6,7 @@ PHILO_SRC = philo.c
 
 COMMON_SRC = ft_putstr_error.c ft_strlen.c arg_error.c ft_isdigit.c check_argv.c \
 			ft_atoi.c nbr_len.c double_check.c launch.c routine.c check_dead.c \
-			ft_time.c ft_usleep.c
+			ft_time.c ft_usleep.c ft_narrator.c end.c
 				
 COMMON_OBJ = ${addprefix ${OBJDIR}, ${COMMON_SRC:%.c=%.o}}
 

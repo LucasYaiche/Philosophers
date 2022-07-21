@@ -6,7 +6,7 @@
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:34:32 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/22 13:33:52 by lyaiche          ###   ########.fr       */
+/*   Updated: 2022/04/28 17:24:42 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 void	*routine(void *arg)
 {
-	t_philo 		*philo;
-	unsigned long	time;
+	t_philo	*philo;
 
-	philo = arg;
-	time = ft_time() - philo->data->begin;
-	pthread_mutex_unlock(&philo->data->narrator);
-	printf("%lu %d has taken a fork\n", time, philo->id);
-	pthread_mutex_lock(philo->lfork);
-	printf("%lu %d has taken a fork\n", time, philo->id);
-	pthread_mutex_lock(philo->rfork);
-	philo->last = ft_time();
-	printf("%lu %d is eating\n", time, philo->id);
-	ft_usleep(philo->data->tte * 1000);
-	printf("%lu %d is sleeping\n", time, philo->id);             
-	ft_usleep(philo->data->tts * 1000);
-	printf("%lu %d is thinking\n", time, philo->id);
-	pthread_mutex_lock(&philo->data->narrator);
-	pthread_mutex_unlock(philo->lfork);
-	pthread_mutex_unlock(philo->rfork);
+		philo = arg;
+	if (philo->id % 2 == 0)
+		ft_usleep(2);
+	while (philo->data->death == 0)
+	{
+		pthread_mutex_lock(philo->lfork);
+		ft_narrator(philo->id, 1, philo->data);
+		pthread_mutex_lock(philo->rfork);
+		ft_narrator(philo->id, 1, philo->data);
+		philo->last = ft_time();
+		ft_narrator(philo->id, 2, philo->data);
+		if (philo->data->notepme && philo->id == philo->data->nbr_philo)
+			philo->nbrmeals++;
+		ft_usleep(philo->data->tte);
+		pthread_mutex_unlock(philo->lfork);
+		pthread_mutex_unlock(philo->rfork);
+		ft_narrator(philo->id, 3, philo->data);
+		ft_usleep(philo->data->tts);
+		ft_narrator(philo->id, 4, philo->data);
+	}	
 	return (0);
 }

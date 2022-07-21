@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_usleep.c                                        :+:      :+:    :+:   */
+/*   ft_time.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/22 12:13:25 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/22 13:30:59 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/04/21 16:46:33 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/04/27 11:40:50 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	ft_usleep(unsigned long time)
+unsigned long	ft_time(void)
 {
-	while(1)
-	{
-		usleep(time);
-		break;
-	}
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + (time.tv_usec / 1000));
 }

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   launch.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lyaiche <lyaiche@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 12:36:11 by lyaiche           #+#    #+#             */
-/*   Updated: 2022/04/19 14:18:06 by lyaiche          ###   ########.fr       */
+/*   Created: 2022/04/21 14:37:20 by lyaiche           #+#    #+#             */
+/*   Updated: 2022/04/28 16:53:37 by lyaiche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_argv(char **argv)
+int	launch(t_data *data)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	while (argv[++i])
+	data->begin = ft_time();
+	while (++i < data->nbr_philo)
 	{
-		j = -1;
-		while (argv[i][++j])
+		data->philos[i].last = ft_time();
+		if (pthread_create(&data->philos[i].thrd_id, NULL,
+				routine, &data->philos[i]))
 		{
-			if (!ft_isdigit(argv[i][j]))
-				return (0);
-		}
+			cleanthreads(data, i);
+			return (0);
+		}	
 	}
+	check_dead(data);
+	i = 0;
+	while (i < data->nbr_philo)
+	{
+		if (pthread_detach(data->philos[i].thrd_id))
+			return (0);
+		i++;
+	}
+	cleanforks(data, data->nbr_philo - 1);
+	free(data->philos);
 	return (1);
 }
